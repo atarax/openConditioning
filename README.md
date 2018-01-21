@@ -77,6 +77,12 @@ which gives you a list of tokens. You can use the deployment-token for example:
 
 ```kubectl -n kube-system describe secret deployment-controller-token-SOMEHASH```
 
+### Cleanup
+
+You can cleanup and destroy the cluster with:
+
+```kops delete cluster your.cluster.domain --yes```
+
 ## Installation
 
 tbd
