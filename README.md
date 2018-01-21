@@ -16,6 +16,8 @@ Run following command and enter values prompted for
 
 ```aws configure```
 
+You can also work with configuration-files in your home-folder. Check aws-cli-documentation for that.
+
 ### DNS and hosted zone
 
 For kops to function propertly, you have to create a hosted-zone on Route53. You also have to own a domain on which you are able to set you DNS-Nameservers to the ones provided by AWS-Route53. You can see the 4 Nameservers when going clicking on your Route53-entry in the interface.
