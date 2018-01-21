@@ -10,7 +10,11 @@
 
 ## Preparations
 
-- run aws configure, enter the values prompted
+### Configure AWS-cli
+
+Run following command and enter values prompted for
+
+```aws configure```
 
 ### DNS and hosted zone
 
