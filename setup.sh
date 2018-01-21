@@ -6,7 +6,7 @@
 aws configure
 
 # load cluster-config
-source config/cluster.env.sh
+source config/cluster.env
 
 # create Route53-hosted-zone
 aws route53 create-hosted-zone --name ${CLUSTER_DNS_NAME} --caller-reference 1
