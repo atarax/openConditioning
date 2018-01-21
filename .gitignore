@@ -1,1 +1,2 @@
-awsApiAccessKey.csv
+secrets/*
+config/cluster.env

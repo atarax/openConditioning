@@ -87,6 +87,7 @@ You can cleanup and destroy the cluster with:
 
 ```kops delete cluster your.cluster.domain --yes```
 
-## Installation
+## Automatic Installation
 
-tbd
+- copy config/cluster.env.example to config/cluster.env and fill out values
+- run setup.sh
