@@ -31,6 +31,10 @@ Kops prefered way of storing it's cluster-configuration is a S3-bucket. It can a
 
 ```aws s3 mb s3://your.s3.bucket.name```
 
+After that, you can set the cops-state-source to this bucket:
+
+```export KOPS_STATE_STORE=s3://your.s3.bucket.name```
+
 ### Creating the cluster
 
 Now you can finally create your cluster. The first command will show you what will be created, the second will commit to the cloud. Be sure to double-check everything before running the update-command! As always, be sure to adjust values properly.
