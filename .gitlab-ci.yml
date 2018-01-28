@@ -2,10 +2,10 @@ stages:
  - build
 
 variables:
-  DOCKER_REPOSITORY=atarax
-  WEBSERVER_IMAGE=bodystats-nginx
+  DOCKER_REPOSITORY: atarax
+  WEBSERVER_IMAGE: bodystats-nginx
 
-build_webserver:
+build webserver:
   image: docker
   stage: build
   script:
