@@ -30,6 +30,7 @@ pipeline {
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
         sh 'cd app/helm'
         sh 'ls -la'
+        sh 'helm repo update'
         sh 'helm upgrade --namespace="staging" ${HELM_RELEASE_NAME} bodystats'
         sh 'helm list'
       }
