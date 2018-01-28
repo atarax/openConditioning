@@ -26,12 +26,13 @@ pipeline {
       }
 
       steps {
-        sh 'echo "now the release..."'
+        sh 'cat $K8L_CONFIG'
       }
     }
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub_credentials')
+    K8L_CONFIG = credentials('k8l-config')
     DOCKER_REPOSITORY = 'atarax'
     WEBSERVER_IMAGE = 'bodystats-nginx'
   }
