@@ -1,8 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'docker'
-      args '-it'
+      image 'debian'
     }
     
   }
