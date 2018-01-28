@@ -14,8 +14,8 @@ build webserver:
   - docker build -t ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}:${CI_COMMIT_REF_NAME} app/nginx
   - docker push ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}
 
-release staging:
+deploy staging:
   image: atarax/kubernetes-toolbox
-  stage: release
+  stage: deploy
   script:
   - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
