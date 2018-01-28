@@ -89,5 +89,6 @@ You can cleanup and destroy the cluster with:
 
 ## Automatic Installation
 
+- do the "DNS and hosted zone" part first, was not able to automate this
 - copy config/cluster.env.example to config/cluster.env and fill out values
 - run setup.sh
