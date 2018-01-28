@@ -26,7 +26,7 @@ pipeline {
       }
 
       steps {
-        sh 'echo "now the rlease...'"
+        sh 'echo "now the release..."'
       }
     }
   }
