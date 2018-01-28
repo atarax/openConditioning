@@ -19,6 +19,12 @@ pipeline {
       }
     }
     stage('Deploy') {
+      agent {
+        docker {
+          image 'docker'
+        }
+      }
+      
       steps {
         sh 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
         sh 'docker pull ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}'
