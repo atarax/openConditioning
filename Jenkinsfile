@@ -32,7 +32,7 @@ pipeline {
         sh 'helm upgrade \
           --namespace="staging" \
           --set image.tag=${GIT_COMMIT} \
-          ${HELM_RELEASE_NAME} \
+          ${HELM_RELEASE_NAME}-staging \
           app/helm/bodystats'
       }
     }
