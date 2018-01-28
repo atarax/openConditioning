@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
-        sh 'docker build -t ${REPOSITORY}/${WEBSERVER_IMAGE}:${CI_COMMIT_REF_NAME} app/nginx'
+        sh 'docker build -t ${REPOSITORY}/${WEBSERVER_IMAGE}:${GIT_COMMIT} app/nginx'
       }
     }
   }
