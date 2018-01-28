@@ -27,7 +27,9 @@ pipeline {
 
       steps {
         sh 'mkdir /root/.kube'
-        sh 'cat $K8L_CONFIG > /root/.kube/config'
+        sh 'cat ${K8L_CONFIG} > /root/.kube/config'
+        sh 'cd helm'
+        sh 'helm upgrade --namespace="staging" ${HELM_RELEASE_NAME} bodystats'
         sh 'helm list'
       }
     }
@@ -37,5 +39,6 @@ pipeline {
     K8L_CONFIG = credentials('k8l-config')
     DOCKER_REPOSITORY = 'atarax'
     WEBSERVER_IMAGE = 'bodystats-nginx'
+    HELM_RELEASE_NAME = 'bodystats'
   }
 }
