@@ -29,7 +29,7 @@ pipeline {
         sh 'mkdir /root/.kube'
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
         sh 'ls -la'
-        sh 'cd helm'
+        sh 'cd app/helm'
         sh 'helm upgrade --namespace="staging" ${HELM_RELEASE_NAME} bodystats'
         sh 'helm list'
       }
