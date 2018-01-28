@@ -46,7 +46,7 @@ pipeline {
       }
     }
 
-    stage('Deploy to Staging') {
+    stage('Deploy to Production') {
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
