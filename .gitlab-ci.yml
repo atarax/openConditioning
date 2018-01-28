@@ -1,5 +1,6 @@
 stages:
  - build
+ - deploy
 
 variables:
   DOCKER_REPOSITORY: atarax
@@ -11,3 +12,9 @@ build webserver:
   script:
   - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
   - docker build -t ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE} app/nginx
+
+push images:
+  image: docker
+  stage: deploy
+  - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
+  - docker push ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE} app/nginx
