@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bodystats-service
+spec:
+  selector:
+    app: bodystats
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: bodystats-deployment
+  labels:
+    app: bodystats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bodystats
+  template:
+    metadata:
+      labels:
+        app: bodystats
+    spec:
+      containers:
+      - name: bodystats-nginx
+        image: atarax/bodystats-nginx:0.0.1
+        ports:
+        - containerPort: 80
+
