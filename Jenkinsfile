@@ -18,22 +18,23 @@ pipeline {
         sh 'echo "tbd.."'
       }
     }
-    stage('Deploy') {
+    stage('Deploy to Staging') {
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
         }
+        
       }
-
       steps {
         sh 'mkdir /root/.kube'
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
         sh 'helm init --client-only'
-        sh 'helm upgrade \
-          --namespace="staging" \
-          --set image.tag=${GIT_COMMIT} \
-          ${HELM_RELEASE_NAME} \
-          app/helm/bodystats'
+        sh 'helm upgrade           --namespace="staging"           --set image.tag=${GIT_COMMIT}           ${HELM_RELEASE_NAME}           app/helm/bodystats'
+      }
+    }
+    stage('Manual Verification') {
+      steps {
+        input(message: 'Deploy to Production?', id: 'deploy_to_production')
       }
     }
   }
