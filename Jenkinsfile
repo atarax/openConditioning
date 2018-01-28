@@ -16,6 +16,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'echo "tbd.."'
+        sh 'echo foo'
       }
     }
   }
