@@ -1,35 +1,39 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: bodystats-service
+  labels:
+    run: bodystats
+  name: bodystats
 spec:
-  selector:
-    app: bodystats
-    tier: backend
   ports:
-  - protocol: TCP
+  - nodePort: 32446
     port: 80
-    targetPort: http
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: bodystats
+  type: LoadBalancer
 ---
-apiVersion: apps/v1beta2
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: bodystats-deployment
   labels:
-    app: bodystats
+    run: bodystats
+  name: bodystats
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bodystats
+      run: bodystats
   template:
     metadata:
       labels:
-        app: bodystats
+        run: bodystats
     spec:
       containers:
-      - name: bodystats-nginx
-        image: atarax/bodystats-nginx:0.0.1
+      - image: nginx
+        imagePullPolicy: Always
+        name: bodystats
         ports:
         - containerPort: 80
-
+          protocol: TCP
