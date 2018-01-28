@@ -7,6 +7,7 @@
 - aws-cli is installed
 - kubectl is installed
 - kops is installed
+- helm is installed
 
 ## Preparations
 
@@ -81,14 +82,26 @@ which gives you a list of tokens. You can use the deployment-token for example:
 
 ```kubectl -n kube-system describe secret deployment-controller-token-SOMEHASH```
 
+## Install helm
+
+For this usecase, it is enough to run: (not production-safe in terms of security)
+
+```helm init```
+
+## Automation
+
+!!!EXPERIMENTAL!!!
+
+### Automatic Installation
+
+- do the "DNS and hosted zone" part first, was not able to automate this
+- copy config/cluster.env.example to config/cluster.env and fill out values
+- run setup.sh
+
 ### Cleanup
 
 You can cleanup and destroy the cluster with:
 
 ```kops delete cluster your.cluster.domain --yes```
 
-## Automatic Installation
 
-- do the "DNS and hosted zone" part first, was not able to automate this
-- copy config/cluster.env.example to config/cluster.env and fill out values
-- run setup.sh
