@@ -26,7 +26,8 @@ pipeline {
       }
 
       steps {
-        sh 'cat $K8L_CONFIG'
+        sh 'cat $K8L_CONFIG > /root/.kube/config'
+        sh 'helm list'
       }
     }
   }
