@@ -21,13 +21,12 @@ pipeline {
     stage('Deploy') {
       agent {
         docker {
-          image 'docker'
+          image 'atarax/kubernetes-toolbox'
         }
       }
-      
+
       steps {
-        sh 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
-        sh 'docker pull ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}'
+        sh 'echo "now the rlease...'"
       }
     }
   }
