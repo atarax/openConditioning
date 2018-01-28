@@ -5,7 +5,7 @@ variables:
   DOCKER_REPOSITORY=atarax
   WEBSERVER_IMAGE=bodystats-nginx
 
-build webserver:
+build_webserver:
   image: docker
   stage: build
   script:
