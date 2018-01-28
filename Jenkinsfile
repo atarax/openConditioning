@@ -8,7 +8,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
+        sh '''docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}
+docker build -t ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}:${CI_COMMIT_REF_NAME} app/nginx
+docker push ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}'''
       }
     }
   }
