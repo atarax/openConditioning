@@ -16,5 +16,6 @@ build webserver:
 push images:
   image: docker
   stage: deploy
+  script:
   - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
   - docker push ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE} app/nginx
