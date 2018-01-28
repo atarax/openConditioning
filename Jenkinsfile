@@ -16,7 +16,12 @@ pipeline {
     stage('Test') {
       steps {
         sh 'echo "tbd.."'
-        sh 'echo foo'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
+        sh 'docker pull ${DOCKER_REPOSITORY}/${WEBSERVER_IMAGE}'
       }
     }
   }
