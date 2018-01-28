@@ -14,5 +14,7 @@ pipeline {
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub_credentials')
+    DOCKER_REPOSITORY = 'atarax'
+    WEBSERVER_IMAGE = 'bodystats-nginx'
   }
 }
