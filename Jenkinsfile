@@ -22,6 +22,9 @@ pipeline {
     }
 
     stage('Deploy to Staging') {
+      when {
+        expression { return env.BRANCH_NAME == 'next' }
+      }
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
