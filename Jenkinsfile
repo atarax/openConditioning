@@ -26,10 +26,6 @@ pipeline {
         expression { return env.BRANCH_NAME == 'next' || env.BRANCH_NAME == 'master' }
       }
 
-      when {
-        expression { return env.BRANCH_NAME == 'master' }
-      }
-      
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
@@ -59,6 +55,10 @@ pipeline {
     }
 
     stage('Deploy to Production') {
+      when {
+        expression { return env.BRANCH_NAME == 'master' }
+      }
+
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
