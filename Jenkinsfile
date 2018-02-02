@@ -22,12 +22,16 @@ pipeline {
     }
 
     stage('Deploy to Staging') {
+      when {
+        expression { return env.BRANCH_NAME == 'next' || env.BRANCH_NAME == 'master' }
+      }
+
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
         }
-        
       }
+
       steps {
         sh 'mkdir /root/.kube'
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
@@ -41,17 +45,24 @@ pipeline {
     }
 
     stage('Manual Verification') {
+      when {
+        expression { return env.BRANCH_NAME == 'master' }
+      }
+
       steps {
         input(message: 'Deploy to Production?', id: 'deploy_to_production')
       }
     }
 
     stage('Deploy to Production') {
+      when {
+        expression { return env.BRANCH_NAME == 'master' }
+      }
+
       agent {
         docker {
           image 'atarax/kubernetes-toolbox'
         }
-
       }
       steps {
         sh 'mkdir /root/.kube'
