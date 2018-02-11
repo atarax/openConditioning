@@ -39,7 +39,7 @@ pipeline {
         sh 'helm init --client-only'
         sh 'helm upgrade --install \
             --namespace="staging" \
-            --set image.tag=${GIT_COMMIT} \
+            --set image.tag=${GIT_COMMIT},hosts={${BRANCH_NAME}.k8l.atarax.me \
             ${HELM_RELEASE_NAME}-staging \
             app/helm/bodystats'
       }
