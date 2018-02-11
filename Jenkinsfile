@@ -70,7 +70,7 @@ pipeline {
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
         sh 'helm init --client-only'
         sh 'helm upgrade --install \
-            --namespace="staging" \
+            --namespace="production" \
             --set image.tag=${GIT_COMMIT},ingress.hosts={somesvc.k8l.atarax.me} \
             ${HELM_RELEASE_NAME}-production \
             app/helm/bodystats'
