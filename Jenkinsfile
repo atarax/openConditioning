@@ -37,7 +37,7 @@ pipeline {
         sh 'mkdir /root/.kube'
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
         sh 'helm init --client-only'
-        sh 'helm upgrade \
+        sh 'helm upgrade --install \
             --namespace="staging" \
             --set image.tag=${GIT_COMMIT} \
             ${HELM_RELEASE_NAME}-staging \
@@ -69,7 +69,7 @@ pipeline {
         sh 'mkdir /root/.kube'
         sh 'cat ${K8L_CONFIG} > /root/.kube/config'
         sh 'helm init --client-only'
-        sh 'helm upgrade \
+        sh 'helm upgrade --install \
             --namespace="staging" \
             --set image.tag=${GIT_COMMIT} \
             ${HELM_RELEASE_NAME}-production \
