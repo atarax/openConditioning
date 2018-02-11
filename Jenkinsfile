@@ -39,7 +39,7 @@ pipeline {
         sh 'helm init --client-only'
         sh 'helm upgrade --install \
             --namespace="staging" \
-            --set image.tag=${GIT_COMMIT},ingress.hosts={${BRANCH_NAME}.k8l.atarax.me} \
+            --set image.tag=${GIT_COMMIT},ingress.hosts={test.k8l.atarax.me} \
             ${HELM_RELEASE_NAME}-staging \
             app/helm/bodystats'
       }
@@ -71,7 +71,7 @@ pipeline {
         sh 'helm init --client-only'
         sh 'helm upgrade --install \
             --namespace="staging" \
-            --set image.tag=${GIT_COMMIT} \
+            --set image.tag=${GIT_COMMIT},ingress.hosts={test.k8l.atarax.me} \
             ${HELM_RELEASE_NAME}-production \
             app/helm/bodystats'
       }
