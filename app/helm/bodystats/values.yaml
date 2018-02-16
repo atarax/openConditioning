@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: atarax/bodystats-nginx
-  tag: 0.0.1
+  tag: f846ef983736211b264b818857b8be0886c7d2cc
   pullPolicy: IfNotPresent
 
 service:
@@ -20,7 +20,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
-    - chart-example.local
+    - bla.k8l.atarax.me
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
